@@ -20,7 +20,7 @@
 ## Preview
 
 What the web app looks like
-![App](preview.png "Shiprock, New Mexico by Beau Rogers")
+![Background](preview.png)
 
 ## Potential
 

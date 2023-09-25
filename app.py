@@ -9,12 +9,12 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 def generate_lyrics(seed_text, next_words):
     # Loading the tokenizer
-    with open('tame_impala_tokenizer_mk1.pickle', 'rb') as handle:
+    with open('tame_impala_tokenizer_mk2.pickle', 'rb') as handle:
       tokenizer = pickle.load(handle)
     max_sequence_len = tokenizer.num_words
 
     # Loading the model
-    LSTM_model = load_model('LSTM_mk1.h5')
+    LSTM_model = load_model('LSTM_mk2.h5')
     max_sequence_len = LSTM_model.input_shape[1] + 1
 
     # Generting lyrics
