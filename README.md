@@ -20,7 +20,8 @@
 ## Preview
 
 What the web app looks like
-![Background](preview.png)
+![image](https://github.com/sanyamjain0315/clone-impala/assets/111227515/893b8b4b-57e4-4b4c-b215-1e21ebb1a3b2)
+
 
 ## Potential
 
