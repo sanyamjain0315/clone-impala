@@ -9,13 +9,13 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 def generate_lyrics(seed_text, next_words):
     # Loading the tokenizer
-    with open('models\\tame_impala_tokenizer_mk2.pickle', 'rb') as handle:
+    with open('models\\tame_impala_tokenizer_mk3.pickle', 'rb') as handle:
       tokenizer = pickle.load(handle)
     max_sequence_len = tokenizer.num_words
 
     # Loading the model
-    LSTM_model = load_model('models\\double_LSTM_mk1.h5')
-    max_sequence_len = LSTM_model.input_shape[1] + 1
+    model = load_model('models\\double_LSTM_mk2.h5')
+    max_sequence_len = model.input_shape[1] + 1
 
     # Generting lyrics
     for _ in range(next_words):
@@ -23,9 +23,7 @@ def generate_lyrics(seed_text, next_words):
         token_list = pad_sequences([token_list], 
                                    maxlen=max_sequence_len-1, 
                                    padding='pre')
-        predicted_probs = LSTM_model.predict(token_list, verbose=0)[0]
-        predicted = np.random.choice([x for x in range(len(predicted_probs))],
-                                    p=predicted_probs)
+        predicted = np.argmax(model.predict(token_list, verbose=0), axis=-1)
         
         output_word = ""
         for word, index in tokenizer.word_index.items():
